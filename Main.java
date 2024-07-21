@@ -1,24 +1,58 @@
-public class Main {
+import java.util.Scanner;
 
+public class Main {
     public static void main(String[] args) {
+      
+        Scanner scanner = new Scanner(System.in);
         Cadastros<Conta> cadastros = new Cadastros<>();
 
-        Conta conta1 = new Conta("user1", "user1@example.com", "senha1");
-        Conta conta2 = new Conta("user2", "user2@example.com", "senha2");
-        
-        cadastros.adicionarConta(conta1);
-        cadastros.adicionarConta(conta2);
-        
-        System.out.println("Listando contas após adição:");
-        cadastros.listarContas();
+        while (true) {
 
-        cadastros.removerConta(conta1);
-        
-        System.out.println("Listando contas após remoção:");
-        cadastros.listarContas();
+            System.out.println("\nQual ação deseja realizar?");
+            System.out.println("1. Adicionar conta");
+            System.out.println("2. Remover conta");
+            System.out.println("3. Listar contas");
+            System.out.println("4. Procurar conta");
+            System.out.println("5. Aumentar vetor de armanezamento");
 
-        Conta encontrada = cadastros.procurarContaPorUsername("user2");
-        System.out.println("Conta encontrada: " + encontrada);
+            int opcao = scanner.nextInt();
+            scanner.nextLine(); 
+
+            switch (opcao) {
+                case 1:
+                    System.out.print("Insira o username: ");
+                    String username = scanner.nextLine();
+                    System.out.print("Insira o email: ");
+                    String email = scanner.nextLine();
+                    System.out.print("Insira a senha: ");
+                    String senha = scanner.nextLine();
+                    Conta conta = new Conta(username, email, senha);
+                    cadastros.adicionarConta(conta);
+                    break;
+                case 2:
+                    System.out.print("Insira o username da conta a ser removida: ");
+                    String usernameRemover = scanner.nextLine();
+                    cadastros.removerConta(usernameRemover);
+                    break;
+                case 3:
+                    cadastros.listarContas();
+                    break;
+                case 4:
+                    System.out.print("Insira o username da conta a ser procurada: ");
+                    String usernameProcurar = scanner.nextLine();
+                    Conta encontrada = cadastros.procurarConta(usernameProcurar);
+                    if (encontrada != null) {
+                        System.out.println(encontrada);
+                    }
+                    break;
+                case 5:
+                    cadastros.aumentarVetor();
+                    break;
+
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+        }
     }
 }
     
