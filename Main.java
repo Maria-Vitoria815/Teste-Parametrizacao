@@ -13,7 +13,6 @@ public class Main {
             System.out.println("2. Remover conta");
             System.out.println("3. Listar contas");
             System.out.println("4. Procurar conta");
-            System.out.println("5. Aumentar vetor de armanezamento");
 
             int opcao = scanner.nextInt();
             scanner.nextLine(); 
@@ -45,10 +44,7 @@ public class Main {
                         System.out.println(encontrada);
                     }
                     break;
-                case 5:
-                    cadastros.aumentarVetor();
-                    break;
-
+                    
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
             }
