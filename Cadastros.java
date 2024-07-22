@@ -47,8 +47,7 @@ public class Cadastros<T> {
         Object[] novoContas = new Object[contas.length * 2];
         System.arraycopy(contas, 0, novoContas, 0, contas.length);
         contas = novoContas;
-        System.out.println("Vetor aumentado com sucesso em 2x!");
-    }
+   }
 
    public void listarContas() {
         if (tamanho == 0) {
